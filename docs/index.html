@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polygot - Intelligent Translation CLI</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="container header-content">
+        <div class="logo">
+          <span onclick="goBack()" class="logo-text">Polygot</span>
+        </div>
+        <nav class="desktop-nav">
+          <a href="#installation">Get Started</a>
+          <a href="#commands">Documentation</a>
+          <a
+            href="https://github.com/vipul69-eng/polygot"
+            target="_blank"
+            class="github-link"
+          >
+            <i data-lucide="github"></i>
+          </a>
+        </nav>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-header">
+        <div class="logo">
+          <div class="logo-icon">
+            <i data-lucide="globe"></i>
+          </div>
+          <span class="logo-text">Polygot</span>
+        </div>
+        <button class="close-menu-btn" id="closeMenuBtn">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <nav class="mobile-nav">
+        <a href="#installation" class="mobile-nav-item">Get Started</a>
+        <a href="#commands" class="mobile-nav-item">Documentation</a>
+        <a
+          href="https://github.com/vipul69-eng/polygot"
+          target="_blank"
+          class="mobile-nav-item"
+          >GitHub</a
+        >
+      </nav>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <nav class="sidebar-nav">
+          <div class="nav-section">
+            <div class="nav-label">CLI Tool</div>
+            <a
+              href="#installation"
+              class="nav-item"
+              data-section="installation"
+            >
+              <i data-lucide="terminal"></i>
+              <span>Installation</span>
+            </a>
+            <a href="#commands" class="nav-item" data-section="commands">
+              <i data-lucide="package"></i>
+              <span>Commands</span>
+            </a>
+          </div>
+
+          <div class="nav-section">
+            <div class="nav-label">Integration</div>
+            <a
+              href="#web-integration"
+              class="nav-item"
+              data-section="web-integration"
+            >
+              <i data-lucide="code"></i>
+              <span>Web Component</span>
+            </a>
+            <a
+              href="#workflow-examples"
+              class="nav-item"
+              data-section="workflow-examples"
+            >
+              <i data-lucide="zap"></i>
+              <span>CI/CD Workflows</span>
+            </a>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- Content Area -->
+      <main class="content">
+        <!-- Hero Section -->
+
+        <!-- Installation Section -->
+        <section id="installation" class="section">
+          <div class="section-header">
+            <h2>Installation</h2>
+            <p>Choose your preferred installation method</p>
+          </div>
+
+          <div class="grid-2">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i data-lucide="globe"></i>
+              </div>
+              <h3>Global Installation</h3>
+              <p>Install Polygot globally for use across all your projects</p>
+              <div class="code-block">
+                <button
+                  class="copy-btn-small"
+                  data-copy="npm install -g polygot"
+                >
+                  <i data-lucide="copy"></i>
+                </button>
+                <pre><code><span class="token-command">npm</span> install -g polygot</code></pre>
+              </div>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i data-lucide="folder"></i>
+              </div>
+              <h3>Local Installation</h3>
+              <p>Install locally for project-specific configurations</p>
+              <div class="code-block">
+                <button class="copy-btn-small" data-copy="npm install polygot">
+                  <i data-lucide="copy"></i>
+                </button>
+                <pre><code><span class="token-command">npm</span> install polygot
+<span class="token-command">npx</span> polygot --help</code></pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Commands Section -->
+        <section id="commands" class="section">
+          <div class="section-header">
+            <h2>Commands Reference</h2>
+            <p>Complete guide to all available commands</p>
+          </div>
+
+          <!-- Extract Strings -->
+          <div id="extract-strings" class="command-section">
+            <div class="command-header">
+              <div class="command-badge">extract</div>
+              <h3>Extract Strings</h3>
+            </div>
+            <p>
+              Scans source files for translatable attributes and generates base
+              localization files.
+            </p>
+
+            <div class="code-block">
+              <button
+                class="copy-btn-small"
+                data-copy="polygot extract <source> <language> <output> [options]"
+              >
+                <i data-lucide="copy"></i>
+              </button>
+              <pre><code><span class="token-command">polygot</span> extract &lt;source&gt; &lt;language&gt; &lt;output&gt; [options]</code></pre>
+            </div>
+
+            <div class="options-table">
+              <h4>Options</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>-a, --attributes</code></td>
+                    <td>
+                      Comma-separated attributes to scan (supports wildcards)
+                    </td>
+                    <td><code>title,alt,placeholder</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>--no-progress</code></td>
+                    <td>Disables the console progress bar</td>
+                    <td>-</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="example-box">
+              <div class="example-header">
+                <span class="example-label">Example</span>
+                <button
+                  class="copy-btn-small"
+                  data-copy='polygot extract ./src en ./locales --attributes "title,placeholder,aria*"'
+                >
+                  <i data-lucide="copy"></i>
+                </button>
+              </div>
+              <pre><code><span class="token-command">polygot</span> extract ./src en ./locales \
+  --attributes <span class="token-string">"title,placeholder,aria*"</span></code></pre>
+            </div>
+          </div>
+
+          <!-- Translate Strings -->
+          <div id="translate-strings" class="command-section">
+            <div class="command-header">
+              <div class="command-badge">translate</div>
+              <h3>Translate Strings</h3>
+            </div>
+            <p>
+              Uses AI to generate high-quality translations for target
+              languages.
+            </p>
+
+            <div class="code-block">
+              <button
+                class="copy-btn-small"
+                data-copy="polygot translate <source> <languages> <output> [options]"
+              >
+                <i data-lucide="copy"></i>
+              </button>
+              <pre><code><span class="token-command">polygot</span> translate &lt;source&gt; &lt;languages&gt; &lt;output&gt; [options]</code></pre>
+            </div>
+
+            <div class="options-table">
+              <h4>Options</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Option</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>-k, --api-key</code></td>
+                    <td>
+                      OpenAI API key (use environment variable for security)
+                    </td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td><code>-m, --model</code></td>
+                    <td>OpenAI model for translation</td>
+                    <td><code>gpt-4o-mini</code></td>
+                  </tr>
+                  <tr>
+                    <td><code>-c, --context</code></td>
+                    <td>Provide context for better translation quality</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td><code>-t, --tone</code></td>
+                    <td>Translation tone (formal, casual, neutral)</td>
+                    <td><code>neutral</code></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="example-box">
+              <div class="example-header">
+                <span class="example-label">Example</span>
+                <button
+                  class="copy-btn-small"
+                  data-copy='export OPENAI_API_KEY=sk-...
+polygot translate ./src es,fr ./locales --context "E-commerce checkout" --tone formal'
+                >
+                  <i data-lucide="copy"></i>
+                </button>
+              </div>
+              <pre><code><span class="token-keyword">export</span> OPENAI_API_KEY=<span class="token-string">sk-...</span>
+<span class="token-command">polygot</span> translate ./src es,fr ./locales \
+  --context <span class="token-string">"E-commerce checkout"</span> \
+  --tone formal</code></pre>
+            </div>
+          </div>
+
+          <!-- Configuration -->
+          <div id="translate-config" class="command-section">
+            <div class="command-header">
+              <div class="command-badge">config</div>
+              <h3>Configuration File</h3>
+            </div>
+            <p>Use configuration files for repeatable translation workflows.</p>
+
+            <div class="grid-2">
+              <div>
+                <h4>Initialize Config</h4>
+                <div class="code-block">
+                  <button class="copy-btn-small" data-copy="polygot init">
+                    <i data-lucide="copy"></i>
+                  </button>
+                  <pre><code><span class="token-command">polygot</span> init</code></pre>
+                </div>
+              </div>
+              <div>
+                <h4>Run Translation</h4>
+                <div class="code-block">
+                  <button
+                    class="copy-btn-small"
+                    data-copy="polygot translate-config"
+                  >
+                    <i data-lucide="copy"></i>
+                  </button>
+                  <pre><code><span class="token-command">polygot</span> translate-config</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Web Integration -->
+        <section id="web-integration" class="section">
+          <div class="section-header">
+            <h2>Web Integration</h2>
+            <p>
+              Client-side translation management with the Polygot Web Component
+            </p>
+          </div>
+
+          <div class="integration-card">
+            <h3>Polygot Translator Component</h3>
+            <p>
+              Handles loading, caching, and switching locale files dynamically
+              on the client-side.
+            </p>
+
+            <div class="code-block">
+              <button
+                class="copy-btn-small"
+                data-copy='<script src="https://unpkg.com/polygot@latest"></script>'
+              >
+                <i data-lucide="copy"></i>
+              </button>
+              <pre><code><span class="token-comment">&lt;!-- 1. Load the Web Component --&gt;</span>
+<span class="token-tag">&lt;script</span> <span class="token-attr">src</span>=<span class="token-string">"https://unpkg.com/polygot@latest"</span><span class="token-tag">&gt;&lt;/script&gt;</span>
+
+<span class="token-comment">&lt;!-- 2. Add polygot-translator tag --&gt;</span>
+<span class="token-tag">&lt;polygot-translator</span> 
+  <span class="token-attr">id</span>=<span class="token-string">"app"</span> 
+  <span class="token-attr">loc</span>=<span class="token-string">"./locales/"</span> 
+  <span class="token-attr">lang</span>=<span class="token-string">"en"</span><span class="token-tag">&gt;</span>
+<span class="token-tag">&lt;/polygot-translator&gt;</span>
+  <span class="token-tag">&lt;h2</span> <span class="token-attr">title</span>=<span class="token-string">"Welcome"</span><span class="token-tag">&gt;</span>Hello<span class="token-tag">&lt;/h2&gt;</span>
+
+<span class="token-comment">&lt;!-- 3. Switch languages --&gt;</span>
+<span class="token-tag">&lt;button</span> <span class="token-attr">onclick</span>=<span class="token-string">"app.changeLanguage('es')"</span><span class="token-tag">&gt;</span>
+  Español
+<span class="token-tag">&lt;/button&gt;</span></code></pre>
+            </div>
+
+            <div class="demo-box">
+              <div class="demo-header">
+                <span>Live Demo</span>
+              </div>
+              <div class="demo-content">
+                <p id="demoText" class="demo-text">
+                  Welcome to Polygot documentation
+                </p>
+                <div class="demo-buttons">
+                  <button
+                    class="demo-btn"
+                    onclick="document.getElementById('demoText').textContent = 'Welcome to Polygot documentation'"
+                  >
+                    English
+                  </button>
+                  <button
+                    class="demo-btn"
+                    onclick="document.getElementById('demoText').textContent = 'Bienvenido a la documentación de Polygot'"
+                  >
+                    Español
+                  </button>
+                  <button
+                    class="demo-btn"
+                    onclick="document.getElementById('demoText').textContent = 'Bienvenue dans la documentation Polygot'"
+                  >
+                    Français
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Workflows Section -->
+        <section id="workflow-examples" class="section">
+          <div class="section-header">
+            <h2>CI/CD Workflows</h2>
+            <p>Automate your translation pipeline</p>
+          </div>
+
+          <div class="workflow-card">
+            <div class="workflow-header">
+              <i data-lucide="git-branch"></i>
+              <div>
+                <h3>GitHub Actions Example</h3>
+                <p>Automated translation on every deployment</p>
+              </div>
+            </div>
+
+            <div class="code-block">
+              <button
+                class="copy-btn-small"
+                data-copy="#!/bin/bash
+set -e
+polygot extract ./src en ./public/locales
+polygot translate ./src es,fr,de ./public/locales --no-progress"
+              >
+                <i data-lucide="copy"></i>
+              </button>
+              <pre><code><span class="token-comment">#!/bin/bash</span>
+<span class="token-keyword">set</span> -e
+
+<span class="token-comment"># Extract base strings</span>
+<span class="token-command">polygot</span> extract ./src en ./public/locales
+
+<span class="token-comment"># Translate to multiple languages</span>
+<span class="token-command">polygot</span> translate ./src es,fr,de,ja ./public/locales \
+  --api-key <span class="token-var">$OPENAI_API_KEY</span> \
+  --context <span class="token-string">"Enterprise SaaS UI"</span> \
+  --tone professional \
+  --no-progress
+
+<span class="token-keyword">echo</span> <span class="token-string">"✓ Translation complete"</span></code></pre>
+            </div>
+          </div>
+
+          <div class="feature-grid">
+            <div class="feature-item">
+              <i data-lucide="zap"></i>
+              <h4>Fast Processing</h4>
+              <p>Parallel translation for multiple languages</p>
+            </div>
+            <div class="feature-item">
+              <i data-lucide="shield"></i>
+              <h4>Type Safe</h4>
+              <p>Generated types for translation keys</p>
+            </div>
+            <div class="feature-item">
+              <i data-lucide="refresh-cw"></i>
+              <h4>Auto Updates</h4>
+              <p>Detect and translate new strings automatically</p>
+            </div>
+            <div class="feature-item">
+              <i data-lucide="check-circle"></i>
+              <h4>Quality Assured</h4>
+              <p>Context-aware AI translations</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="footer-content">
+            <div class="footer-left">
+              <div class="logo">
+                <div class="logo-icon">
+                  <i data-lucide="globe"></i>
+                </div>
+                <span class="logo-text">Polygot</span>
+              </div>
+              <p>Intelligent translation for modern applications</p>
+            </div>
+            <div class="footer-links">
+              <div class="footer-column">
+                <h4>Documentation</h4>
+                <a href="#installation">Installation</a>
+                <a href="#commands">Commands</a>
+              </div>
+              <div class="footer-column">
+                <h4>Resources</h4>
+                <a href="#web-integration">Web Integration</a>
+                <a href="#workflow-examples">CI/CD</a>
+                <a href="https://github.com/vipul69-eng/polygot">GitHub</a>
+              </div>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <p>&copy;Polygot. Built with ❤️ for developers.</p>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+      <i data-lucide="arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
