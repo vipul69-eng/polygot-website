@@ -6,21 +6,24 @@
     <title>Polygot - AI-Powered Translation CLI</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/polygot"></script>
   </head>
   <body>
+    <polygot-translator
+      id="polygot"
+      loc="/website/public/locales"
+      lang="en"
+    ></polygot-translator>
     <!-- Navigation -->
     <nav class="nav">
-      <div class="container nav-content">
+      <div class="nav-container nav-content">
         <div class="logo">
-          <div class="logo-icon">
-            <i data-lucide="globe"></i>
-          </div>
           <span class="logo-text">Polygot</span>
         </div>
         <div class="nav-links">
           <a href="#features">Features</a>
           <a href="#how-it-works">How It Works</a>
-          <a href="../docs/docs.html">Docs</a>
+          <a href="/website/docs/index.html">Docs</a>
           <a
             href="https://github.com/vipul69-eng/polygot"
             target="_blank"
@@ -44,7 +47,7 @@
       <div class="mobile-menu-links">
         <a href="#features">Features</a>
         <a href="#how-it-works">How It Works</a>
-        <a href="../docs/docs.html">Documentation</a>
+        <a href="/website/docs/index.html">Documentation</a>
         <a href="https://github.com" target="_blank">GitHub</a>
         <a href="#get-started" class="btn-mobile">Get Started</a>
       </div>
@@ -67,12 +70,8 @@
           high-quality translations.
         </p>
         <div class="hero-actions">
-          <a href="#get-started" class="btn btn-primary">
-            <i data-lucide="download"></i>
-            Get Started
-          </a>
-          <a href="../docs/docs.html" class="btn btn-secondary">
-            <i data-lucide="book-open"></i>
+          <a href="#get-started" class="btn btn-primary"> Get Started </a>
+          <a href="/website/docs/index.html" class="btn btn-secondary">
             View Docs
           </a>
         </div>
@@ -160,7 +159,7 @@
             </div>
             <h3>Multi-Language</h3>
             <p>
-              Support for 100+ languages. Translate to multiple targets in a
+              Support for 20+ languages. Translate to multiple targets in a
               single command.
             </p>
           </div>
@@ -304,7 +303,7 @@
             </button>
           </div>
           <div class="get-started-links">
-            <a href="../docs/docs.html" class="link-with-icon">
+            <a href="/website/docs/" class="link-with-icon">
               <i data-lucide="book-open"></i>
               Read the Documentation
             </a>
@@ -327,9 +326,6 @@
         <div class="footer-main">
           <div class="footer-brand">
             <div class="logo">
-              <div class="logo-icon">
-                <i data-lucide="globe"></i>
-              </div>
               <span class="logo-text">Polygot</span>
             </div>
             <p>AI-powered translation for modern applications</p>
@@ -339,13 +335,24 @@
               <h4>Product</h4>
               <a href="#features">Features</a>
               <a href="#how-it-works">How It Works</a>
-              <a href="../docs/docs.html">Documentation</a>
+              <a href="/website/docs/index.html">Documentation</a>
+              <select id="languageSelect" class="nav-language-select">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="de">Deutsch</option>
+                <option value="fr">Français</option>
+                <option value="hi">हिन्दी</option>
+              </select>
             </div>
             <div class="footer-column">
               <h4>Resources</h4>
-              <a href="../docs/docs.html#commands">CLI Reference</a>
-              <a href="../docs/docs.html#web-integration">Web Component</a>
-              <a href="../docs/docs.html#workflow-examples">CI/CD Guide</a>
+              <a href="/website/docs/index.html#commands">CLI Reference</a>
+              <a href="/website/docs/index.html#web-integration"
+                >Web Component</a
+              >
+              <a href="/website/docs/index.html#workflow-examples"
+                >CI/CD Guide</a
+              >
             </div>
             <div class="footer-column">
               <h4>Community</h4>
@@ -364,7 +371,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>&copy; Polygot. Open source and free forever.</p>
+          <p>&copy; Polygot. Open source.</p>
           <div class="footer-social">
             <a
               href="https://github.com/vipul69-eng/polygot"

@@ -1,0 +1,11 @@
+{
+  "source": "./docs/index.html",
+  "output": "./public/locales",
+  "languages": ["es", "de", "fr", "hi"],
+  "attributes": ["title", "alt", "placeholder", "aria*"],
+  "excludeTags": [],
+  "model": "gpt-4o-mini",
+  "context": "Web application UI",
+  "tone": "neutral",
+  "chunkSize": 50
+}

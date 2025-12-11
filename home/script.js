@@ -136,4 +136,30 @@ const initIcons = () => {
   lucide.createIcons();
 };
 
+const translateLanguage = () => {};
+
 setTimeout(initIcons, 100);
+
+function changeLanguage(lang) {
+  // Use the polygot-translator web component
+  const translator =
+    document.getElementById("polygot") ||
+    document.querySelector("polygot-translator");
+
+  console.log("Changing language to:", lang);
+  if (translator && typeof translator.changeLanguage === "function") {
+    translator.changeLanguage(lang);
+  } else {
+    console.warn("polygot-translator not ready or changeLanguage not found");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const languageSelect = document.getElementById("languageSelect");
+  if (languageSelect) {
+    languageSelect.addEventListener("change", function (event) {
+      const lang = event.target.value;
+      changeLanguage(lang);
+    });
+  }
+});

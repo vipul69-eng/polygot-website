@@ -53,6 +53,12 @@ body {
 /* ===========================
    NAVIGATION
    =========================== */
+
+.nav-container {
+  margin: 0 auto;
+  padding: 0 48px;
+  max-width: 1400px;
+}
 .nav {
   position: fixed;
   top: 0;
