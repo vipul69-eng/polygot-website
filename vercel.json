@@ -4,6 +4,6 @@
   "routes": [
     { "src": "/docs", "dest": "/website/docs/index.html" },
     { "src": "/", "dest": "/website/home/index.html" },
-    { "source": "/locales/(.*)", "destination": "/public/locales/$1" }
+    { "src": "/locales/(.*)", "dest": "/public/locales/$1" }
   ]
 }
