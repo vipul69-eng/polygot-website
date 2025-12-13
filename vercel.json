@@ -1,3 +1,8 @@
 {
-  "routes": [{ "src": "/", "dest": "/website/index.html" }]
+  "version": 2,
+  "builds": [{ "src": "**", "use": "@vercel/static" }],
+  "routes": [
+    { "src": "/docs", "dest": "/docs/index.html" },
+    { "src": "/home", "dest": "/home/index.html" }
+  ]
 }
