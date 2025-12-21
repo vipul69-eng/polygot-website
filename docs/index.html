@@ -4,17 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Polygot</title>
-    <link rel="stylesheet" href="./docs/styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://unpkg.com/polygot"></script>
   </head>
   <body>
     <polygot-translator
       id="polygot"
-      loc="/locales/docs"
+      loc="/locales"
       lang="en"
     ></polygot-translator>
-    <!-- Header -->
     <header class="header">
       <div class="container header-content">
         <div class="logo">
@@ -37,7 +36,6 @@
       </div>
     </header>
 
-    <!-- Mobile Menu Overlay -->
     <div class="mobile-menu" id="mobileMenu">
       <div class="mobile-menu-header">
         <div class="logo">
@@ -62,9 +60,7 @@
       </nav>
     </div>
 
-    <!-- Main Container -->
     <div class="main-container">
-      <!-- Sidebar -->
       <aside class="sidebar" id="sidebar">
         <nav class="sidebar-nav">
           <div class="nav-section">
@@ -105,11 +101,7 @@
         </nav>
       </aside>
 
-      <!-- Content Area -->
       <main class="content">
-        <!-- Hero Section -->
-
-        <!-- Installation Section -->
         <section id="installation" class="section">
           <div class="section-header">
             <h2>Installation</h2>
@@ -151,14 +143,12 @@
           </div>
         </section>
 
-        <!-- Commands Section -->
         <section id="commands" class="section">
           <div class="section-header">
             <h2>Commands Reference</h2>
             <p>Complete guide to all available commands</p>
           </div>
 
-          <!-- Extract Strings -->
           <div id="extract-strings" class="command-section">
             <div class="command-header">
               <div class="command-badge">extract</div>
@@ -221,7 +211,6 @@
             </div>
           </div>
 
-          <!-- Translate Strings -->
           <div id="translate-strings" class="command-section">
             <div class="command-header">
               <div class="command-badge">translate</div>
@@ -297,7 +286,6 @@ polygot translate ./src es,fr ./locales --context "E-commerce checkout" --tone f
             </div>
           </div>
 
-          <!-- Configuration -->
           <div id="translate-config" class="command-section">
             <div class="command-header">
               <div class="command-badge">config</div>
@@ -331,80 +319,338 @@ polygot translate ./src es,fr ./locales --context "E-commerce checkout" --tone f
           </div>
         </section>
 
-        <!-- Web Integration -->
         <section id="web-integration" class="section">
           <div class="section-header">
             <h2>Web Integration</h2>
             <p>
-              Client-side translation management with the Polygot Web Component
+              <code
+                style="
+                  font-size: 1.1em;
+                  color: var(--primary);
+                  font-weight: bold;
+                "
+                >&lt;polygot-translator&gt;</code
+              >
+            </p>
+            <p style="margin-top: 10px">
+              A lightweight, framework-agnostic web component that adds
+              multi-language support and SEO optimization to any website without
+              wrapping text or rewriting HTML.
             </p>
           </div>
 
-          <div class="integration-card">
-            <h3>Polygot Translator Component</h3>
+          <div class="grid-2">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i data-lucide="sparkles"></i>
+              </div>
+              <h3>Core Features</h3>
+              <ul style="list-style: none; color: var(--text-secondary)">
+                <li style="margin-bottom: 8px">
+                  <i
+                    data-lucide="check"
+                    style="
+                      width: 16px;
+                      display: inline-block;
+                      vertical-align: middle;
+                      margin-right: 8px;
+                      color: var(--primary);
+                    "
+                  ></i>
+                  Automatic language detection from URL
+                </li>
+                <li style="margin-bottom: 8px">
+                  <i
+                    data-lucide="check"
+                    style="
+                      width: 16px;
+                      display: inline-block;
+                      vertical-align: middle;
+                      margin-right: 8px;
+                      color: var(--primary);
+                    "
+                  ></i>
+                  Language persistence (localStorage)
+                </li>
+                <li style="margin-bottom: 8px">
+                  <i
+                    data-lucide="check"
+                    style="
+                      width: 16px;
+                      display: inline-block;
+                      vertical-align: middle;
+                      margin-right: 8px;
+                      color: var(--primary);
+                    "
+                  ></i>
+                  Instant language switching (no reload)
+                </li>
+                <li>
+                  <i
+                    data-lucide="check"
+                    style="
+                      width: 16px;
+                      display: inline-block;
+                      vertical-align: middle;
+                      margin-right: 8px;
+                      color: var(--primary);
+                    "
+                  ></i>
+                  Translates Text nodes & Attributes
+                </li>
+              </ul>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i data-lucide="search"></i>
+              </div>
+              <h3>SEO Optimized</h3>
+              <p>
+                Automatically handles SEO tags without manual configuration:
+              </p>
+              <ul style="list-style: none; color: var(--text-secondary)">
+                <li style="margin-bottom: 8px">
+                  <strong>&bull;</strong> &lt;html lang&gt; attributes
+                </li>
+                <li style="margin-bottom: 8px">
+                  <strong>&bull;</strong> hreflang links
+                </li>
+                <li style="margin-bottom: 8px">
+                  <strong>&bull;</strong> Canonical URLs
+                </li>
+                <li><strong>&bull;</strong> Open Graph & Meta Description</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="command-section">
+            <h3>Installation</h3>
             <p>
-              Handles loading, caching, and switching locale files dynamically
-              on the client-side.
+              No build tools required. Add the component to your HTML
+              (preferably near body).
+            </p>
+            <div class="code-block">
+              <button
+                class="copy-btn-small"
+                data-copy='<script src="https://unpkg.com/polygot"></script>'
+              >
+                <i data-lucide="copy"></i>
+              </button>
+              <pre><code><span class="token-tag">&lt;script</span> <span class="token-attr">src</span>=<span class="token-string">"https://unpkg.com/polygot"</span><span class="token-tag">&gt;&lt;/script&gt;</span></code></pre>
+            </div>
+          </div>
+
+          <div class="command-section">
+            <h3>Basic Usage</h3>
+            <p>
+              That’s it. All visible text on the page will now be translatable.
+            </p>
+            <div class="code-block">
+              <button
+                class="copy-btn-small"
+                data-copy='<polygot-translator loc="/locales" languages="en,es,fr" default-lang="en"></polygot-translator>'
+              >
+                <i data-lucide="copy"></i>
+              </button>
+              <pre><code><span class="token-tag">&lt;polygot-translator</span>
+  <span class="token-attr">loc</span>=<span class="token-string">"/locales"</span>
+  <span class="token-attr">languages</span>=<span class="token-string">"en,es,fr"</span>
+  <span class="token-attr">default-lang</span>=<span class="token-string">"en"</span>
+<span class="token-tag">&gt;&lt;/polygot-translator&gt;</span></code></pre>
+            </div>
+          </div>
+
+          <div class="command-section">
+            <div class="command-header">
+              <i data-lucide="file-json" style="color: var(--primary)"></i>
+              <h3>Translation Files</h3>
+            </div>
+            <p>
+              Create a folder for translations (default:
+              <code>/locales</code>). Keys must exactly match the original text.
+            </p>
+            <p style="font-size: 14px; margin-top: -10px; margin-bottom: 20px">
+              Example: <code>/locales/es.json</code>
             </p>
 
             <div class="code-block">
               <button
                 class="copy-btn-small"
-                data-copy='<script src="https://unpkg.com/polygot@latest"></script>'
+                data-copy='{
+  "Hello World": "Hola Mundo",
+  "Contact Us": "Contáctanos",
+  "meta.title": "Mi sitio web",
+  "meta.description": "Este es un sitio web multilingüe",
+  "meta.og:title": "Mi sitio web",
+  "meta.og:description": "Contenido en español"
+}'
               >
                 <i data-lucide="copy"></i>
               </button>
-              <pre><code><span class="token-comment">&lt;!-- 1. Load the Web Component --&gt;</span>
-<span class="token-tag">&lt;script</span> <span class="token-attr">src</span>=<span class="token-string">"https://unpkg.com/polygot@latest"</span><span class="token-tag">&gt;&lt;/script&gt;</span>
+              <pre><code>{
+  <span class="token-attr">"Hello World"</span>: <span class="token-string">"Hola Mundo"</span>,
+  <span class="token-attr">"Contact Us"</span>: <span class="token-string">"Contáctanos"</span>,
+  <span class="token-comment">// SEO Metatags</span>
+  <span class="token-attr">"meta.title"</span>: <span class="token-string">"Mi sitio web"</span>,
+  <span class="token-attr">"meta.description"</span>: <span class="token-string">"Este es un sitio web multilingüe"</span>,
+  <span class="token-attr">"meta.og:title"</span>: <span class="token-string">"Mi sitio web"</span>,
+  <span class="token-attr">"meta.og:description"</span>: <span class="token-string">"Contenido en español"</span>
+}</code></pre>
+            </div>
+          </div>
 
-<span class="token-comment">&lt;!-- 2. Add polygot-translator tag --&gt;</span>
-<span class="token-tag">&lt;polygot-translator</span> 
-  <span class="token-attr">id</span>=<span class="token-string">"app"</span> 
-  <span class="token-attr">loc</span>=<span class="token-string">"./locales/"</span> 
-  <span class="token-attr">lang</span>=<span class="token-string">"en"</span><span class="token-tag">&gt;</span>
-<span class="token-tag">&lt;/polygot-translator&gt;</span>
-  <span class="token-tag">&lt;h2</span> <span class="token-attr">title</span>=<span class="token-string">"Welcome"</span><span class="token-tag">&gt;</span>Hello<span class="token-tag">&lt;/h2&gt;</span>
+          <div class="command-section">
+            <div class="command-header">
+              <i data-lucide="globe" style="color: var(--primary)"></i>
+              <h3>URL Language Detection</h3>
+            </div>
+            <p>
+              Choose how language is detected using the
+              <code>url-pattern</code> attribute.
+            </p>
 
-<span class="token-comment">&lt;!-- 3. Switch languages --&gt;</span>
-<span class="token-tag">&lt;button</span> <span class="token-attr">onclick</span>=<span class="token-string">"app.changeLanguage('es')"</span><span class="token-tag">&gt;</span>
-  Español
-<span class="token-tag">&lt;/button&gt;</span></code></pre>
+            <div class="code-block">
+              <button
+                class="copy-btn-small"
+                data-copy='<polygot-translator url-pattern="path"></polygot-translator>'
+              >
+                <i data-lucide="copy"></i>
+              </button>
+              <pre><code><span class="token-tag">&lt;polygot-translator</span> <span class="token-attr">url-pattern</span>=<span class="token-string">"path"</span><span class="token-tag">&gt;&lt;/polygot-translator&gt;</span></code></pre>
             </div>
 
-            <div class="demo-box">
-              <div class="demo-header">
-                <span>Live Demo</span>
+            <div class="options-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Pattern</th>
+                    <th>Example</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>path</code></td>
+                    <td><code>/es/about</code></td>
+                    <td>Detects language from first URL segment</td>
+                  </tr>
+                  <tr>
+                    <td><code>subdomain</code></td>
+                    <td><code>es.example.com</code></td>
+                    <td>Detects language from subdomain</td>
+                  </tr>
+                  <tr>
+                    <td><code>query</code></td>
+                    <td><code>?lang=es</code></td>
+                    <td>Detects from query parameter</td>
+                  </tr>
+                  <tr>
+                    <td><code>hash</code></td>
+                    <td><code>#es</code></td>
+                    <td>Detects from URL hash</td>
+                  </tr>
+                  <tr>
+                    <td><code>auto</code></td>
+                    <td>-</td>
+                    <td>Tries all methods automatically</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="example-box">
+              <div class="example-header">
+                <span class="example-label">Priority Order</span>
               </div>
-              <div class="demo-content">
-                <p id="demoText" class="demo-text">
-                  Welcome to Polygot documentation
-                </p>
-                <div class="demo-buttons">
+              <div style="padding: 20px">
+                <ol
+                  style="
+                    padding-left: 20px;
+                    color: var(--text-secondary);
+                    font-size: 14px;
+                  "
+                >
+                  <li>URL detection (Path/Query/etc)</li>
+                  <li>Saved language (localStorage)</li>
+                  <li><code>lang</code> attribute</li>
+                  <li><code>default-lang</code> attribute</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <div class="command-section">
+            <h3>JavaScript API</h3>
+            <p>Control the translator programmatically.</p>
+
+            <div class="grid-2">
+              <div>
+                <h4>Change Language</h4>
+                <div class="code-block">
                   <button
-                    class="demo-btn"
-                    onclick="document.getElementById('demoText').textContent = 'Welcome to Polygot documentation'"
+                    class="copy-btn-small"
+                    data-copy='document.querySelector("polygot-translator").changeLanguage("fr");'
                   >
-                    English
+                    <i data-lucide="copy"></i>
                   </button>
+                  <pre><code><span class="token-comment">// Switch language</span>
+document
+  .querySelector(<span class="token-string">"polygot-translator"</span>)
+  .changeLanguage(<span class="token-string">"fr"</span>);</code></pre>
+                </div>
+              </div>
+
+              <div>
+                <h4>Sitemap Generation</h4>
+                <div class="code-block">
                   <button
-                    class="demo-btn"
-                    onclick="document.getElementById('demoText').textContent = 'Bienvenido a la documentación de Polygot'"
+                    class="copy-btn-small"
+                    data-copy='const sitemapData = document.querySelector("polygot-translator").generateSitemapData();'
                   >
-                    Español
+                    <i data-lucide="copy"></i>
                   </button>
+                  <pre><code><span class="token-comment">// Get language-aware URLs</span>
+<span class="token-keyword">const</span> data = document
+  .querySelector(<span class="token-string">"polygot-translator"</span>)
+  .generateSitemapData();</code></pre>
+                </div>
+              </div>
+
+              <div>
+                <h4>Debugging</h4>
+                <div class="code-block">
                   <button
-                    class="demo-btn"
-                    onclick="document.getElementById('demoText').textContent = 'Bienvenue dans la documentation Polygot'"
+                    class="copy-btn-small"
+                    data-copy='document.querySelector("polygot-translator").getDetectionInfo();'
                   >
-                    Français
+                    <i data-lucide="copy"></i>
                   </button>
+                  <pre><code><span class="token-comment">// View detection logic</span>
+document
+  .querySelector(<span class="token-string">"polygot-translator"</span>)
+  .getDetectionInfo();</code></pre>
+                </div>
+              </div>
+
+              <div>
+                <h4>Events</h4>
+                <div class="code-block">
+                  <button
+                    class="copy-btn-small"
+                    data-copy='document.addEventListener("polygot-ready", (e) => console.log(e.detail));'
+                  >
+                    <i data-lucide="copy"></i>
+                  </button>
+                  <pre><code>document.addEventListener(
+  <span class="token-string">"polygot-ready"</span>, 
+  (e) => console.log(e.detail)
+);</code></pre>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- Workflows Section -->
         <section id="workflow-examples" class="section">
           <div class="section-header">
             <h2>CI/CD Workflows</h2>
@@ -471,7 +717,6 @@ polygot translate ./src es,fr,de ./public/locales --no-progress"
           </div>
         </section>
 
-        <!-- Footer -->
         <footer class="footer">
           <div class="footer-content">
             <div class="footer-left">
@@ -485,11 +730,10 @@ polygot translate ./src es,fr,de ./public/locales --no-progress"
       </main>
     </div>
 
-    <!-- Back to Top Button -->
     <button class="back-to-top" id="backToTop">
       <i data-lucide="arrow-up"></i>
     </button>
 
-    <script src="./docs/script.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

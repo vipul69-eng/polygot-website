@@ -156,6 +156,7 @@ function changeLanguage(lang) {
 
 document.addEventListener("DOMContentLoaded", function () {
   const languageSelect = document.getElementById("languageSelect");
+
   if (languageSelect) {
     languageSelect.addEventListener("change", function (event) {
       const lang = event.target.value;
