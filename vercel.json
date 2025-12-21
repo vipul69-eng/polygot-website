@@ -2,51 +2,91 @@
   "version": 2,
   "routes": [
     {
-      "src": "/home/styles\\.css",
+      "src": "/home/styles.css",
       "dest": "/home/styles.css"
     },
     {
-      "src": "/home/script\\.js",
+      "src": "/home/script.js",
       "dest": "/home/script.js"
     },
     {
-      "src": "/docs/.*\\.(css|js)",
-      "dest": "/$0"
+      "src": "/docs/styles.css",
+      "dest": "/docs/styles.css"
     },
     {
-      "src": "/.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|woff|woff2)",
-      "dest": "/$0"
+      "src": "/home/script.js",
+      "dest": "/home/script.js"
     },
     {
-      "src": "/public/locales/(.*)\\.json",
-      "dest": "/public/locales/$1.json"
+      "src": "/docs/(.*)",
+      "dest": "/docs/$1"
     },
     {
-      "src": "/locales/(.*)\\.json",
-      "dest": "/public/locales/$1.json"
+      "src": "/public/(.*)",
+      "dest": "/public/$1"
     },
     {
-      "src": "/(en|es|fr|de)/home/?$",
+      "src": "/locales/(.*)",
+      "dest": "/public/locales/$1"
+    },
+    {
+      "src": "/en/home/?",
       "dest": "/home/index.html"
     },
     {
-      "src": "/(en|es|fr|de)/docs/?$",
+      "src": "/es/home/?",
+      "dest": "/home/index.html"
+    },
+    {
+      "src": "/fr/home/?",
+      "dest": "/home/index.html"
+    },
+    {
+      "src": "/de/home/?",
+      "dest": "/home/index.html"
+    },
+    {
+      "src": "/en/docs/?",
       "dest": "/docs/index.html"
     },
     {
-      "src": "/home/?$",
-      "dest": "/home/index.html"
-    },
-    {
-      "src": "/docs/?$",
+      "src": "/es/docs/?",
       "dest": "/docs/index.html"
     },
     {
-      "src": "/(en|es|fr|de)/?$",
+      "src": "/fr/docs/?",
+      "dest": "/docs/index.html"
+    },
+    {
+      "src": "/de/docs/?",
+      "dest": "/docs/index.html"
+    },
+    {
+      "src": "/en/?",
       "dest": "/home/index.html"
     },
     {
-      "src": "/?$",
+      "src": "/es/?",
+      "dest": "/home/index.html"
+    },
+    {
+      "src": "/fr/?",
+      "dest": "/home/index.html"
+    },
+    {
+      "src": "/de/?",
+      "dest": "/home/index.html"
+    },
+    {
+      "src": "/home/?",
+      "dest": "/home/index.html"
+    },
+    {
+      "src": "/docs/?",
+      "dest": "/docs/index.html"
+    },
+    {
+      "src": "/?",
       "dest": "/home/index.html"
     }
   ]
