@@ -1,9 +1,57 @@
 {
   "version": 2,
-  "builds": [{ "src": "**", "use": "@vercel/static" }],
+  "builds": [
+    {
+      "src": "**",
+      "use": "@vercel/static"
+    }
+  ],
   "routes": [
-    { "src": "/docs", "dest": "/website/docs/index.html" },
-    { "src": "/home", "dest": "/website/home/index.html" },
-    { "src": "/locales/(.*)", "dest": "/public/locales/$1" }
+    {
+      "src": "/public/locales/(.*)",
+      "dest": "/public/locales/$1",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    },
+    {
+      "src": "/locales/(.*)",
+      "dest": "/public/locales/$1",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    },
+    {
+      "src": "/(en|es|fr|de)/?$",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/(en|es|fr|de)/about/?$",
+      "dest": "/about.html"
+    },
+    {
+      "src": "/(en|es|fr|de)/contact/?$",
+      "dest": "/contact.html"
+    },
+    {
+      "src": "/(en|es|fr|de)/docs/?$",
+      "dest": "/docs.html"
+    },
+    {
+      "src": "/(en|es|fr|de)/(.*)",
+      "dest": "/$2"
+    },
+    {
+      "src": "/docs/?$",
+      "dest": "/website/docs/index.html"
+    },
+    {
+      "src": "/?$",
+      "dest": "/website/home/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
   ]
 }
