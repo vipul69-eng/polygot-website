@@ -2,40 +2,20 @@
   "version": 2,
   "routes": [
     {
-      "src": "/home/styles\\.css",
-      "dest": "/home/styles.css"
+      "src": "/styles\\.css",
+      "dest": "/styles.css"
     },
     {
-      "src": "/home/script\\.js",
-      "dest": "/home/script.js"
+      "src": "/script\\.js",
+      "dest": "/script.js"
     },
     {
-      "src": "/home/.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|webp)",
-      "dest": "/$0"
-    },
-    {
-      "src": "/public/locales/(.*)\\.json",
-      "dest": "/public/locales/$1.json"
-    },
-    {
-      "src": "/locales/(.*)\\.json",
-      "dest": "/public/locales/$1.json"
+      "src": "/public/locales/(.*)",
+      "dest": "/public/locales/$1"
     },
     {
       "src": "/(en|es|fr|de)/?$",
       "dest": "/home/index.html"
-    },
-    {
-      "src": "/(en|es|fr|de)/about/?$",
-      "dest": "/about.html"
-    },
-    {
-      "src": "/(en|es|fr|de)/contact/?$",
-      "dest": "/contact.html"
-    },
-    {
-      "src": "/(en|es|fr|de)/docs/?$",
-      "dest": "/docs/index.html"
     },
     {
       "src": "/docs/?$",
