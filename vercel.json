@@ -22,6 +22,31 @@
       }
     },
     {
+      "src": "/(.*)\\.css",
+      "dest": "/$1.css",
+      "headers": {
+        "Content-Type": "text/css"
+      }
+    },
+    {
+      "src": "/(.*)\\.js",
+      "dest": "/$1.js",
+      "headers": {
+        "Content-Type": "application/javascript"
+      }
+    },
+    {
+      "src": "/(.*)\\.(png|jpg|jpeg|gif|svg|ico|webp)",
+      "dest": "/$1.$2"
+    },
+    {
+      "src": "/(.*)\\.json",
+      "dest": "/$1.json",
+      "headers": {
+        "Content-Type": "application/json"
+      }
+    },
+    {
       "src": "/(en|es|fr|de)/?$",
       "dest": "/index.html"
     },
