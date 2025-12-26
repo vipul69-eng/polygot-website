@@ -1,13 +1,12 @@
 {
   "version": 2,
-  "rewrites": [
-    { "source": "/(en|es|fr|de)/home", "destination": "/home/index.html" },
-    { "source": "/(en|es|fr|de)/docs", "destination": "/docs/index.html" },
-    { "source": "/(en|es|fr|de)", "destination": "/home/index.html" },
-    { "source": "/home", "destination": "/home/index.html" },
-    { "source": "/docs", "destination": "/docs/index.html" },
-    { "source": "/locales/(.*)", "destination": "/public/locales/$1" },
-    { "source": "/", "destination": "/home/index.html" },
-    { "source": "/(.*)", "destination": "/$1" }
+  "routes": [
+    { "src": "/locales/(.*)", "dest": "/public/locales/$1" },
+    { "src": "/(en|es|fr|de)/home", "dest": "/home/index.html" },
+    { "src": "/(en|es|fr|de)/docs", "dest": "/docs/index.html" },
+    { "src": "/(en|es|fr|de)", "dest": "/home/index.html" },
+    { "src": "/home", "dest": "/home/index.html" },
+    { "src": "/docs", "dest": "/docs/index.html" },
+    { "src": "/", "dest": "/home/index.html" }
   ]
 }
