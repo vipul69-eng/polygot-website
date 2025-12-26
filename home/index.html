@@ -393,133 +393,24 @@
         </div>
       </div>
     </footer>
+    <script src="/home/script.js"></script>
 
-    <script>
-
-     // Replace your entire <script> section with this clean version
-
-// Initialize Lucide icons
-lucide.createIcons();
-
-// === LANGUAGE DETECTION FROM URL ===
-function getLanguageFromURL() {
-  const path = window.location.pathname;
-  const match = path.match(/^\/(en|es|fr|de)(\/|$)/);
-  return match ? match[1] : 'en';
-}
-
-const urlLang = getLanguageFromURL();
-console.log('URL Language detected:', urlLang);
-
-// Get elements
-const polygotTranslator = document.getElementById('polygot');
-const languageSelect = document.getElementById("languageSelect");
-const mobileLanguageSelect = document.getElementById("mobileLanguageSelect");
-const languageBadge = document.getElementById("languageBadge");
-
-// Initialize language from URL when component is ready
-function initLanguageFromURL() {
-  if (polygotTranslator && typeof polygotTranslator.changeLanguage === 'function') {
-    polygotTranslator.changeLanguage(urlLang);
-    languageSelect.value = urlLang;
-    mobileLanguageSelect.value = urlLang;
-    console.log('Language initialized to:', urlLang);
-    return true;
-  }
-  return false;
-}
-
-// Try to initialize immediately, or wait for component to be ready
-if (!initLanguageFromURL()) {
-  setTimeout(initLanguageFromURL, 100);
-}
-
-// Check if first visit (for badge animation)
-const hasVisited = localStorage.getItem("polygot-visited");
-if (!hasVisited) {
-  languageSelect.classList.add("first-visit");
-  setTimeout(() => {
-    languageBadge.style.display = "none";
-    languageSelect.classList.remove("first-visit");
-    localStorage.setItem("polygot-visited", "true");
-  }, 9000);
-} else {
-  languageBadge.style.display = "none";
-}
-
-// Change language function with URL update
-function changeLanguage(lang) {
-  // Update URL
-  const currentPath = window.location.pathname;
-  const hasLangInPath = /^\/(en|es|fr|de)(\/|$)/.test(currentPath);
+<script>
+  // Only keep the first-visit badge logic here (page-specific)
+  const languageSelect = document.getElementById("languageSelect");
+  const languageBadge = document.getElementById("languageBadge");
   
-  let newPath;
-  if (hasLangInPath) {
-    newPath = currentPath.replace(/^\/(en|es|fr|de)/, `/${lang}`);
+  const hasVisited = localStorage.getItem("polygot-visited");
+  if (!hasVisited) {
+    languageSelect.classList.add("first-visit");
+    setTimeout(() => {
+      languageBadge.style.display = "none";
+      languageSelect.classList.remove("first-visit");
+      localStorage.setItem("polygot-visited", "true");
+    }, 9000);
   } else {
-    newPath = `/${lang}${currentPath}`;
+    languageBadge.style.display = "none";
   }
-  
-  window.history.pushState({}, '', newPath);
-  
-  // Update component using its changeLanguage method
-  if (polygotTranslator && typeof polygotTranslator.changeLanguage === 'function') {
-    polygotTranslator.changeLanguage(lang);
-  }
-  
-  // Update dropdowns
-  languageSelect.value = lang;
-  mobileLanguageSelect.value = lang;
-  
-  // Hide badge
-  languageBadge.style.display = 'none';
-  languageSelect.classList.remove('first-visit');
-}
-
-// Event listeners for language selectors
-languageSelect.addEventListener("change", (e) => {
-  changeLanguage(e.target.value);
-});
-
-mobileLanguageSelect.addEventListener("change", (e) => {
-  changeLanguage(e.target.value);
-});
-
-// Mobile menu toggle
-const mobileMenuToggle = document.getElementById("mobileMenuToggle");
-const mobileMenu = document.getElementById("mobileMenu");
-const mobileMenuClose = document.getElementById("mobileMenuClose");
-
-mobileMenuToggle.addEventListener("click", () => {
-  mobileMenu.classList.add("active");
-});
-
-mobileMenuClose.addEventListener("click", () => {
-  mobileMenu.classList.remove("active");
-});
-
-// Close mobile menu when clicking links
-document.querySelectorAll(".mobile-menu-links a").forEach((link) => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.remove("active");
-  });
-});
-
-// Copy button functionality
-document.querySelectorAll(".copy-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const text = btn.getAttribute("data-copy");
-    navigator.clipboard.writeText(text).then(() => {
-      const originalHTML = btn.innerHTML;
-      btn.innerHTML = '<i data-lucide="check"></i>';
-      lucide.createIcons();
-      setTimeout(() => {
-        btn.innerHTML = originalHTML;
-        lucide.createIcons();
-      }, 2000);
-    });
-  });
-});
 </script>
   </body>
 </html>
