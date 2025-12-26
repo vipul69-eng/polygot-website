@@ -455,6 +455,12 @@
     polygotTranslator.setAttribute('lang', lang);
     languageBadge.style.display = 'none';
     languageSelect.classList.remove('first-visit');
+
+    const translator =
+    document.getElementById("polygot") ||
+    document.querySelector("polygot-translator");
+
+    translator.changeLanguage(lang)
   }
 
   languageSelect.addEventListener("change", (e) => {
