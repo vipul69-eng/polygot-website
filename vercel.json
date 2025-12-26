@@ -6,7 +6,8 @@
     { "source": "/(en|es|fr|de)", "destination": "/home/index.html" },
     { "source": "/home", "destination": "/home/index.html" },
     { "source": "/docs", "destination": "/docs/index.html" },
-    { "source": "/locales/:file", "destination": "/public/locales/:file" },
-    { "source": "/", "destination": "/home/index.html" }
+    { "source": "/locales/(.*)", "destination": "/public/locales/$1" },
+    { "source": "/", "destination": "/home/index.html" },
+    { "source": "/(.*)", "destination": "/$1" }
   ]
 }
