@@ -3,10 +3,14 @@
   "buildCommand": "echo 'No build needed'",
   "outputDirectory": ".",
   "rewrites": [
+    { "source": "/(en|es|fr|de)/home/:path*", "destination": "/home/index.html" },
+    { "source": "/(en|es|fr|de)/docs/:path*", "destination": "/docs/index.html" },
     { "source": "/(en|es|fr|de)/home", "destination": "/home/index.html" },
     { "source": "/(en|es|fr|de)/docs", "destination": "/docs/index.html" },
     { "source": "/(en|es|fr|de)", "destination": "/home/index.html" },
+    { "source": "/home/:path*", "destination": "/home/index.html" },
     { "source": "/home", "destination": "/home/index.html" },
+    { "source": "/docs/:path*", "destination": "/docs/index.html" },
     { "source": "/docs", "destination": "/docs/index.html" },
     { "source": "/locales/(.*)", "destination": "/public/locales/$1" },
     { "source": "/", "destination": "/home/index.html" }
