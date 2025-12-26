@@ -395,85 +395,111 @@
     </footer>
 
     <script>
-      // Initialize Lucide icons
-      lucide.createIcons();
+  // Initialize Lucide icons
+  lucide.createIcons();
 
-      // Language selector functionality
-      const languageSelect = document.getElementById("languageSelect");
-      const mobileLanguageSelect = document.getElementById(
-        "mobileLanguageSelect"
-      );
-      const languageBadge = document.getElementById("languageBadge");
+  // === LANGUAGE DETECTION FROM URL ===
+  // Extract language from URL path
+  function getLanguageFromURL() {
+    const path = window.location.pathname;
+    const match = path.match(/^\/(en|es|fr|de)(\/|$)/);
+    return match ? match[1] : 'en';
+  }
 
-      // Check if first visit
-      const hasVisited = localStorage.getItem("polygot-visited");
-      if (!hasVisited) {
-        languageSelect.classList.add("first-visit");
+  const urlLang = getLanguageFromURL();
+  
+  // Set language on component immediately
+  const polygotTranslator = document.getElementById('polygot');
+  polygotTranslator.setAttribute('lang', urlLang);
+
+  // Language selector functionality
+  const languageSelect = document.getElementById("languageSelect");
+  const mobileLanguageSelect = document.getElementById("mobileLanguageSelect");
+  const languageBadge = document.getElementById("languageBadge");
+
+  // Set selectors to match URL language
+  languageSelect.value = urlLang;
+  mobileLanguageSelect.value = urlLang;
+
+  // Check if first visit
+  const hasVisited = localStorage.getItem("polygot-visited");
+  if (!hasVisited) {
+    languageSelect.classList.add("first-visit");
+    setTimeout(() => {
+      languageBadge.style.display = "none";
+      languageSelect.classList.remove("first-visit");
+      localStorage.setItem("polygot-visited", "true");
+    }, 9000);
+  } else {
+    languageBadge.style.display = "none";
+  }
+
+  // Modified changeLanguage to update URL
+  function changeLanguage(lang) {
+    // Update URL
+    const currentPath = window.location.pathname;
+    let newPath;
+    
+    const hasLangInPath = /^\/(en|es|fr|de)(\/|$)/.test(currentPath);
+    if (hasLangInPath) {
+      newPath = currentPath.replace(/^\/(en|es|fr|de)/, `/${lang}`);
+    } else {
+      newPath = `/${lang}${currentPath}`;
+    }
+    
+    window.history.pushState({}, '', newPath);
+    
+    // Update component and selectors
+    languageSelect.value = lang;
+    mobileLanguageSelect.value = lang;
+    polygotTranslator.setAttribute('lang', lang);
+    languageBadge.style.display = 'none';
+    languageSelect.classList.remove('first-visit');
+  }
+
+  languageSelect.addEventListener("change", (e) => {
+    changeLanguage(e.target.value);
+  });
+
+  mobileLanguageSelect.addEventListener("change", (e) => {
+    changeLanguage(e.target.value);
+  });
+
+  // Mobile menu toggle
+  const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileMenuClose = document.getElementById("mobileMenuClose");
+
+  mobileMenuToggle.addEventListener("click", () => {
+    mobileMenu.classList.add("active");
+  });
+
+  mobileMenuClose.addEventListener("click", () => {
+    mobileMenu.classList.remove("active");
+  });
+
+  // Close mobile menu when clicking links
+  document.querySelectorAll(".mobile-menu-links a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+    });
+  });
+
+  // Copy button functionality
+  document.querySelectorAll(".copy-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const text = btn.getAttribute("data-copy");
+      navigator.clipboard.writeText(text).then(() => {
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<i data-lucide="check"></i>';
+        lucide.createIcons();
         setTimeout(() => {
-          languageBadge.style.display = "none";
-          languageSelect.classList.remove("first-visit");
-          localStorage.setItem("polygot-visited", "true");
-        }, 9000); // Remove after 9 seconds
-      } else {
-        languageBadge.style.display = "none";
-      }
-
-      // Sync language selectors
-      function changeLanguage(lang) {
-        languageSelect.value = lang;
-        mobileLanguageSelect.value = lang;
-        polygotTranslator.setAttribute("lang", lang);
-        languageBadge.style.display = "none";
-        languageSelect.classList.remove("first-visit");
-      }
-
-      languageSelect.addEventListener("change", (e) => {
-        changeLanguage(e.target.value);
+          btn.innerHTML = originalHTML;
+          lucide.createIcons();
+        }, 2000);
       });
-
-      mobileLanguageSelect.addEventListener("change", (e) => {
-        changeLanguage(e.target.value);
-      });
-
-      // Mobile menu toggle
-      const mobileMenuToggle = document.getElementById("mobileMenuToggle");
-      const mobileMenu = document.getElementById("mobileMenu");
-      const mobileMenuClose = document.getElementById("mobileMenuClose");
-
-      mobileMenuToggle.addEventListener("click", () => {
-        mobileMenu.classList.add("active");
-      });
-
-      mobileMenuClose.addEventListener("click", () => {
-        mobileMenu.classList.remove("active");
-      });
-
-      // Close mobile menu when clicking links
-      document.querySelectorAll(".mobile-menu-links a").forEach((link) => {
-        link.addEventListener("click", () => {
-          mobileMenu.classList.remove("active");
-        });
-      });
-
-      const polygotTranslator = document.getElementById("polygot");
-      console.log(polygotTranslator.getCurrentLanguage());
-      languageSelect.value = polygotTranslator.getCurrentLanguage();
-
-      // Copy button functionality
-      document.querySelectorAll(".copy-btn").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const text = btn.getAttribute("data-copy");
-          navigator.clipboard.writeText(text).then(() => {
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<i data-lucide="check"></i>';
-            lucide.createIcons();
-            setTimeout(() => {
-              btn.innerHTML = originalHTML;
-              lucide.createIcons();
-            }, 2000);
-          });
-        });
-      });
-    </script>
+    });
+  });
+</script>
   </body>
 </html>
