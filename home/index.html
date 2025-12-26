@@ -395,6 +395,94 @@
     </footer>
 
     <script>
+
+      (function() {
+  // Extract language from URL path
+  function getLanguageFromURL() {
+    const path = window.location.pathname;
+    const match = path.match(/^\/(en|es|fr|de)(\/|$)/);
+    return match ? match[1] : 'en';
+  }
+
+  // Get the language from URL
+  const urlLang = getLanguageFromURL();
+  console.log('URL Language detected:', urlLang);
+  
+  // Function to initialize language from URL
+  function initLanguageFromURL() {
+    const polygot = document.getElementById('polygot');
+    
+    if (polygot && typeof polygot.changeLanguage === 'function') {
+      // Use the component's changeLanguage method
+      polygot.changeLanguage(urlLang);
+      console.log('Language set via changeLanguage():', urlLang);
+      
+      // Update dropdowns
+      const languageSelect = document.getElementById('languageSelect');
+      const mobileLanguageSelect = document.getElementById('mobileLanguageSelect');
+      if (languageSelect) languageSelect.value = urlLang;
+      if (mobileLanguageSelect) mobileLanguageSelect.value = urlLang;
+      
+      return true;
+    }
+    return false;
+  }
+  
+  // Try to initialize immediately
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      // Try immediately on DOM ready
+      if (!initLanguageFromURL()) {
+        // If component not ready, wait a bit
+        setTimeout(initLanguageFromURL, 100);
+      }
+    });
+  } else {
+    // DOM already loaded
+    if (!initLanguageFromURL()) {
+      setTimeout(initLanguageFromURL, 100);
+    }
+  }
+  
+  // Override the global changeLanguage function to update URL
+  window.changeLanguageWithURL = function(lang) {
+    const currentPath = window.location.pathname;
+    let newPath;
+    
+    // Check if we already have a language in the path
+    const hasLangInPath = /^\/(en|es|fr|de)(\/|$)/.test(currentPath);
+    
+    if (hasLangInPath) {
+      // Replace existing language code
+      newPath = currentPath.replace(/^\/(en|es|fr|de)/, `/${lang}`);
+    } else {
+      // Add language code to path
+      const pathWithoutLang = currentPath.startsWith('/') ? currentPath : `/${currentPath}`;
+      newPath = `/${lang}${pathWithoutLang}`;
+    }
+    
+    // Update URL without reload
+    window.history.pushState({}, '', newPath);
+    
+    // Call the component's changeLanguage method
+    const polygot = document.getElementById('polygot');
+    if (polygot && typeof polygot.changeLanguage === 'function') {
+      polygot.changeLanguage(lang);
+    }
+    
+    // Update dropdowns
+    const languageSelect = document.getElementById('languageSelect');
+    const mobileLanguageSelect = document.getElementById('mobileLanguageSelect');
+    if (languageSelect) languageSelect.value = lang;
+    if (mobileLanguageSelect) mobileLanguageSelect.value = lang;
+    
+    // Hide badge
+    const languageBadge = document.getElementById('languageBadge');
+    if (languageBadge) languageBadge.style.display = 'none';
+    
+    if (languageSelect) languageSelect.classList.remove('first-visit');
+  };
+})();
   // Initialize Lucide icons
   lucide.createIcons();
 
