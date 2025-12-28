@@ -90,12 +90,6 @@ body {
   text-decoration: none;
 }
 
-.logo-text {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
 .logo-icon {
   width: 36px;
   height: 36px;
@@ -459,6 +453,12 @@ body {
   font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
   font-size: 14px;
   line-height: 1.8;
+}
+
+.logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
 /* ===========================

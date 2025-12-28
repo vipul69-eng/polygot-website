@@ -510,81 +510,57 @@ polygot translate ./src es,fr ./locales --context "E-commerce checkout" --tone f
 
           <div class="command-section">
             <div class="command-header">
-              <i data-lucide="globe" style="color: var(--primary)"></i>
-              <h3>URL Language Detection</h3>
+              <i data-lucide="fishing-hook" style="color: var(--primary)"></i>
+              <h3><code>language-change</code> Hook</h3>
             </div>
-            <p>
-              Choose how language is detected using the
-              <code>url-pattern</code> attribute.
-            </p>
+            <p>Run a custom function on language change.</p>
 
             <div class="code-block">
               <button
                 class="copy-btn-small"
-                data-copy='<polygot-translator url-pattern="path"></polygot-translator>'
+                data-copy='document.addEventListener("language-change", (event) => {
+  console.log("Language changed:", event.detail);
+});'
               >
                 <i data-lucide="copy"></i>
               </button>
-              <pre><code><span class="token-tag">&lt;polygot-translator</span> <span class="token-attr">url-pattern</span>=<span class="token-string">"path"</span><span class="token-tag">&gt;&lt;/polygot-translator&gt;</span></code></pre>
+              <pre><code><span class="token-keyword">document</span>.<span class="token-method">addEventListener</span>(<span class="token-string">"language-change"</span>, (<span class="token-param">event</span>) <span class="token-operator">=&gt;</span> {
+  <span class="token-keyword">console</span>.<span class="token-method">log</span>(<span class="token-string">"Language changed:"</span>, <span class="token-keyword">event</span>.<span class="token-property">detail</span>);
+});</code></pre>
             </div>
 
             <div class="options-table">
               <table>
                 <thead>
                   <tr>
-                    <th>Pattern</th>
-                    <th>Example</th>
+                    <th>Property</th>
+                    <th>Type</th>
                     <th>Description</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>path</code></td>
-                    <td><code>/es/about</code></td>
-                    <td>Detects language from first URL segment</td>
+                    <td><code>previousLang</code></td>
+                    <td><code>string</code></td>
+                    <td>The language code before the change</td>
                   </tr>
                   <tr>
-                    <td><code>subdomain</code></td>
-                    <td><code>es.example.com</code></td>
-                    <td>Detects language from subdomain</td>
+                    <td><code>currentLang</code></td>
+                    <td><code>string</code></td>
+                    <td>The new active language code</td>
                   </tr>
                   <tr>
-                    <td><code>query</code></td>
-                    <td><code>?lang=es</code></td>
-                    <td>Detects from query parameter</td>
+                    <td><code>translations</code></td>
+                    <td><code>object</code></td>
+                    <td>The loaded translation object for current language</td>
                   </tr>
                   <tr>
-                    <td><code>hash</code></td>
-                    <td><code>#es</code></td>
-                    <td>Detects from URL hash</td>
-                  </tr>
-                  <tr>
-                    <td><code>auto</code></td>
-                    <td>-</td>
-                    <td>Tries all methods automatically</td>
+                    <td><code>timestamp</code></td>
+                    <td><code>number</code></td>
+                    <td>Unix timestamp when the change occurred</td>
                   </tr>
                 </tbody>
               </table>
-            </div>
-
-            <div class="example-box">
-              <div class="example-header">
-                <span class="example-label">Priority Order</span>
-              </div>
-              <div style="padding: 20px">
-                <ol
-                  style="
-                    padding-left: 20px;
-                    color: var(--text-secondary);
-                    font-size: 14px;
-                  "
-                >
-                  <li>URL detection (Path/Query/etc)</li>
-                  <li>Saved language (localStorage)</li>
-                  <li><code>lang</code> attribute</li>
-                  <li><code>default-lang</code> attribute</li>
-                </ol>
-              </div>
             </div>
           </div>
 
@@ -646,7 +622,7 @@ document
                 <div class="code-block">
                   <button
                     class="copy-btn-small"
-                    data-copy='document.addEventListener("polygot-ready", (e) => console.log(e.detail));'
+                    data-copy='document.addEventListener("language-change", (e) => console.log(e));'
                   >
                     <i data-lucide="copy"></i>
                   </button>
