@@ -1,9 +1,9 @@
 {
   "source": "./docs/index.html",
-  "output": "./public/locales",
-  "languages": ["es", "de", "fr", "hi"],
+  "output": "./public/locales/docs",
+  "languages": ["es", "fr", "de"],
   "attributes": ["title", "alt", "placeholder", "aria*"],
-  "excludeTags": [],
+  "excludeTags": ["code"],
   "model": "gpt-4o-mini",
   "context": "Web application UI",
   "tone": "neutral",

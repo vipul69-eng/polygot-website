@@ -4,94 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ===========================
-// LANGUAGE DETECTION FROM URL
-// ===========================
-function getLanguageFromURL() {
-  const path = window.location.pathname;
-  const match = path.match(/^\/(en|es|fr|de)(\/|$)/);
-  return match ? match[1] : 'en';
-}
-
-// Initialize language from URL when page loads
-document.addEventListener("DOMContentLoaded", () => {
-  const urlLang = getLanguageFromURL();
-  console.log('URL Language detected:', urlLang);
-  
-  const translator = document.getElementById("polygot") || document.querySelector("polygot-translator");
-  const languageSelect = document.getElementById("languageSelect");
-  const mobileLanguageSelect = document.getElementById("mobileLanguageSelect");
-  
-  // Set language on component
-  function initLanguage() {
-    if (translator && typeof translator.changeLanguage === 'function') {
-      translator.changeLanguage(urlLang);
-      if (languageSelect) languageSelect.value = urlLang;
-      if (mobileLanguageSelect) mobileLanguageSelect.value = urlLang;
-      console.log('Language initialized to:', urlLang);
-    } else {
-      // Retry if component not ready
-      setTimeout(initLanguage, 100);
-    }
-  }
-  
-  initLanguage();
-});
-
-// ===========================
-// CHANGE LANGUAGE WITH URL UPDATE
-// ===========================
-function changeLanguage(lang) {
-  const translator = document.getElementById("polygot") || document.querySelector("polygot-translator");
-  
-  // Update URL
-  const currentPath = window.location.pathname;
-  const hasLangInPath = /^\/(en|es|fr|de)(\/|$)/.test(currentPath);
-  
-  let newPath;
-  if (hasLangInPath) {
-    newPath = currentPath.replace(/^\/(en|es|fr|de)/, `/${lang}`);
-  } else {
-    newPath = `/${lang}${currentPath}`;
-  }
-  
-  window.history.pushState({}, '', newPath);
-  
-  // Update component
-  console.log("Changing language to:", lang);
-  if (translator && typeof translator.changeLanguage === "function") {
-    translator.changeLanguage(lang);
-  } else {
-    console.warn("polygot-translator not ready or changeLanguage not found");
-  }
-  
-  // Update dropdowns
-  const languageSelect = document.getElementById("languageSelect");
-  const mobileLanguageSelect = document.getElementById("mobileLanguageSelect");
-  if (languageSelect) languageSelect.value = lang;
-  if (mobileLanguageSelect) mobileLanguageSelect.value = lang;
-}
-
-// Language selector event listeners
-document.addEventListener("DOMContentLoaded", function () {
-  const languageSelect = document.getElementById("languageSelect");
-  const mobileLanguageSelect = document.getElementById("mobileLanguageSelect");
-
-  if (languageSelect) {
-    languageSelect.addEventListener("change", function (event) {
-      const lang = event.target.value;
-      changeLanguage(lang);
-    });
-  }
-  
-  if (mobileLanguageSelect) {
-    mobileLanguageSelect.addEventListener("change", function (event) {
-      const lang = event.target.value;
-      changeLanguage(lang);
-    });
-  }
-});
-
-// ===========================
 // MOBILE MENU
 // ===========================
 const mobileMenuToggle = document.getElementById("mobileMenuToggle");
@@ -224,4 +136,31 @@ const initIcons = () => {
   lucide.createIcons();
 };
 
+const translateLanguage = () => {};
+
 setTimeout(initIcons, 100);
+
+function changeLanguage(lang) {
+  // Use the polygot-translator web component
+  const translator =
+    document.getElementById("polygot") ||
+    document.querySelector("polygot-translator");
+
+  console.log("Changing language to:", lang);
+  if (translator && typeof translator.changeLanguage === "function") {
+    translator.changeLanguage(lang);
+  } else {
+    console.warn("polygot-translator not ready or changeLanguage not found");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const languageSelect = document.getElementById("languageSelect");
+
+  if (languageSelect) {
+    languageSelect.addEventListener("change", function (event) {
+      const lang = event.target.value;
+      changeLanguage(lang);
+    });
+  }
+});

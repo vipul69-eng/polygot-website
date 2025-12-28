@@ -1,7 +1,7 @@
 {
-  "name": "website",
+  "name": "polygot.tech",
   "version": "1.0.0",
-  "description": "",
+  "description": "polygot",
   "main": "index.js",
   "directories": {
     "doc": "docs"
@@ -14,6 +14,6 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "polygot": "^2.1.2"
+    "polygot": "^2.1.6"
   }
 }
